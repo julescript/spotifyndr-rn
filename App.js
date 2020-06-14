@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView, Text } from 'react-native';
 
 export default function App() {
   const [enteredGoal, setEnteredGoal] = useState('');
