@@ -1,0 +1,16 @@
+export default {
+    primary: '#1BD760',
+    danger: '#ee2a55',
+    stars: '#FFA900',
+
+    dark: '#333333',
+    darker: '#121212',
+
+    light: '#A7A7A7',
+    lighter: '#EAEAEA',
+    lightest: '#f5f5f5',
+
+    black: '#000000',
+    white: '#ffffff'
+
+  };  
