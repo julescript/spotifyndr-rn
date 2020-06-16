@@ -3,6 +3,7 @@ import { Text, SafeAreaView, View, ScrollView, FlatList, Button } from 'react-na
 import styles from './SearchPageStyles';
 import ArtistCard from '../../library/components/cards/ArtistCard/ArtistCard';
 import SectionTitle from '../../library/components/UI/SectionTitle/SectionTitle';
+import SearchHeader from '../../library/components/navigation/Header';
 
 const DATA = [
     {
@@ -43,9 +44,7 @@ const DATA = [
 const SearchPage = (props) => {
     return (
         <View style={styles.parentContainer}>
-            <SafeAreaView style={styles.topContainer}>
-                {/* <Text>hello top</Text> */}
-            </SafeAreaView>
+            <SearchHeader />
             <View style={styles.botContainer}>
                 <FlatList  
                     ListHeaderComponent={<SectionTitle style={styles.sectionHeader} title={'Artists'} subtitle={"Showing results for ''"}/>}
