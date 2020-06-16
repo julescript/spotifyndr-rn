@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './AlbumCardStyles.js';
 import { View, Image, Text, ActivityIndicator } from 'react-native';
 import colors from '../../../../res/colors.js';
+import { tracksString } from '../../../utils/common.js';
 
 const AlbumCard = (props) => {
     return (
@@ -12,8 +13,8 @@ const AlbumCard = (props) => {
                     source={{uri: props.img,}} 
                     PlaceholderContent={<ActivityIndicator size='large' color={colors.lighter}/>}/>
             </View>
-            <Text style={styles.titleLabel}>{props.title}</Text>
-            <Text style={styles.subtitleLabel}>{props.subtitle}</Text>
+            <Text style={styles.titleLabel}>{props.name}</Text>
+            <Text style={styles.subtitleLabel}>{props.date + ' · ' + tracksString(props.tracks)}</Text>
         </View>
     );
 };
