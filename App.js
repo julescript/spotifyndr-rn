@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Onboarding from './screens/onboarding/Onboarding';
+import AuthController from './screens/authController/AuthController';
 
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
@@ -7,8 +7,10 @@ import * as Font from 'expo-font';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import searchReducer from './library/store/reducers/search';
+import authReducer from './library/store/reducers/auth';
 
 const rootReducer = combineReducers({
+  authReducer: authReducer,
   searchReducer: searchReducer
 });
 
@@ -24,8 +26,8 @@ const fetchFonts = () => {
 };
 
 export default function App() {
+  
   const [dataLoaded, setDataLoaded] = useState(false);
-
   if (!dataLoaded) {
     return (
       <AppLoading
@@ -38,7 +40,7 @@ export default function App() {
   
   return (
     <Provider store={store}>
-      <Onboarding />
+      <AuthController />
     </Provider>
   );
 }

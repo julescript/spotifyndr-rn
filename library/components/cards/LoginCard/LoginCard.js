@@ -7,7 +7,7 @@ const LoginCard = (props) => {
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Get Started</Text>
-            <LoginButton />
+            <LoginButton disabled={props.disabled} onPress={props.onLoginPress}/>
         </View>
     );
 };

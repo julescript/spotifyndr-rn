@@ -7,7 +7,12 @@ export const updateObject = (oldObject, updatedProperties) => {
 
 export let env_check = process.env.NODE_ENV === 'production';
 
-export const my_client_id = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
+// to hide
+export const spotifyCredentials = {
+    clientId: 'e774a71885a946c4bf1761d41d910d26',
+    clientSecret: 'e324bfa507024a8682c96c8b159e5808',
+    redirectUri: 'https://auth.expo.io/@julescript/spotifyndr'
+}
 
 export const isEmptyOrSpaces = (str) => {
     return str === null || str.match(/^ *$/) !== null;
@@ -74,3 +79,12 @@ export const throttle = (func, limit) => {
         }
     }
 }
+
+export const convertHexToRGBA = (hex, opacity) => {
+    const tempHex = hex.replace('#', '');
+    const r = parseInt(tempHex.substring(0, 2), 16);
+    const g = parseInt(tempHex.substring(2, 4), 16);
+    const b = parseInt(tempHex.substring(4, 6), 16);
+
+    return `rgba(${r},${g},${b},${opacity / 100})`;
+};

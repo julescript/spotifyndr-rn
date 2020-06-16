@@ -4,7 +4,7 @@ import styles from './LoginButtonStyles';
 
 const LoginButton = (props) => {
     return (
-        <TouchableOpacity activeOpacity={0.8}>
+        <TouchableOpacity activeOpacity={0.8} onPress={props.onPress} disabled={props.disabled}>
             <View style={styles.container}>
                 <Image source={require('../../../../res/images/spotify.png')} style={styles.image} resizeMode="contain"/>
                 <Text style={styles.text}>Login with Spotify</Text>
