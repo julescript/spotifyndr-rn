@@ -4,6 +4,16 @@ import Onboarding from './screens/onboarding/Onboarding';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
+import searchReducer from './library/store/reducers/search';
+
+const rootReducer = combineReducers({
+  searchReducer: searchReducer
+});
+
+const store = createStore(rootReducer);
+
 const fetchFonts = () => {
   return Font.loadAsync({
     'circular-book': require('./res/fonts/lineto-circular-book.ttf'),
@@ -27,6 +37,8 @@ export default function App() {
   }
   
   return (
+    <Provider store={store}>
       <Onboarding />
+    </Provider>
   );
 }
