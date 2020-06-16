@@ -2,6 +2,7 @@ import React from 'react';
 import Onboarding from '../onboarding/Onboarding';
 import SearchPage from '../search/SearchPage';
 import { useSelector } from 'react-redux';
+import AlbumsPage from '../albums/AlbumsPage';
 
 const AuthController = (props) => {
 

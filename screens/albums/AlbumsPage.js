@@ -1,8 +1,9 @@
 import React from 'react';
+import styles from './AlbumsPageStyles.js';
 import { Text, SafeAreaView, View, ScrollView, FlatList, Button } from 'react-native';
-import styles from './SearchPageStyles';
-import ArtistCard from '../../library/components/cards/ArtistCard/ArtistCard';
+import AlbumCard from '../../library/components/cards/AlbumCard/AlbumCard';
 import SectionTitle from '../../library/components/UI/SectionTitle/SectionTitle';
+import SectionTitleBack from '../../library/components/UI/SectionTitleBack/SectionTitleBack.js';
 
 const DATA = [
     {
@@ -40,7 +41,7 @@ const DATA = [
   ];
   
 
-const SearchPage = (props) => {
+const AlbumsPage = (props) => {
     return (
         <View style={styles.parentContainer}>
             <SafeAreaView style={styles.topContainer}>
@@ -48,16 +49,16 @@ const SearchPage = (props) => {
             </SafeAreaView>
             <View style={styles.botContainer}>
                 <FlatList  
-                    ListHeaderComponent={<SectionTitle style={styles.sectionHeader} title={'Artists'} subtitle={"Showing results for ''"}/>}
+                    ListHeaderComponent={<SectionTitleBack style={styles.sectionHeader} title={'dua lipa'} subtitle={'Albums'}/>}
                     data={DATA}
                     numColumns={2}
                     style={styles.grid}
                     contentContainerStyle={{paddingBottom:20}} 
-                    renderItem={({ item }) => <ArtistCard style={styles.gridItem}/>}
+                    renderItem={({ item }) => <AlbumCard style={styles.gridItem} title={'Future Nostalgia'} subtitle={'2020 · 11 tracks'}/>}
                     ListFooterComponent={<SafeAreaView />}/>
             </View>
         </View>
     );
 };
 
-export default SearchPage;
+export default AlbumsPage;

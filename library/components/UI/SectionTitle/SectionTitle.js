@@ -5,8 +5,8 @@ import { Text, View } from 'react-native';
 const SectionTitle = (props) => {
     return (
         <View style={props.style}>
-            <Text style={styles.title}>Artists</Text>
-            <Text style={styles.subtitle}>Showing results for “dua"</Text>
+            <Text numberOfLines={1} style={styles.title}>{props.title}</Text>
+            <Text style={styles.subtitle}>{props.subtitle}</Text>
         </View>
     );
 };
