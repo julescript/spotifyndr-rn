@@ -13,7 +13,8 @@ const ArtistCard = (props) => {
                 <Image
                     style={styles.image}
                     source={{uri: props.img,}} 
-                    PlaceholderContent={<ActivityIndicator size='large' color={colors.lighter}/>}/>
+                    // PlaceholderContent={<ActivityIndicator size='large' color={colors.lighter}/>}
+                    />
                 <View style={styles.descriptionContainer}>
                     <Text style={styles.nameLabel}>{props.name}</Text>
                     <Text style={styles.descLabel}>{followersString(props.followers)}</Text>

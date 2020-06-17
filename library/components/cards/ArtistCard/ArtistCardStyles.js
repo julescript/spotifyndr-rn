@@ -11,12 +11,16 @@ export default StyleSheet.create({
         position: 'relative'
     },
     imageContainer: {
-        backgroundColor: colors.primary,
+        backgroundColor: colors.dark,
         position: 'absolute',
         top: 0,
         bottom: 0,
         left: 0,
         right: 0,
+    },
+    loader: {
+        height: '60%',
+        width: '100%',
     },
     descriptionContainer: {
         backgroundColor: convertHexToRGBA(colors.dark, 85),
@@ -41,7 +45,6 @@ export default StyleSheet.create({
         marginBottom: 7
     },
     image: {
-        backgroundColor: colors.dark,
         height: '100%',
         width: '100%',
     }
