@@ -83,7 +83,6 @@ const SearchPage = (props) => {
           })
       }
     }, [debouncedSearchTerm] );
-
     return (
         <View style={styles.parentContainer}>
             <SearchHeader onChangeText={(e) => dispatch(updateSearchQuery(e))} value={searchQuery}/>
@@ -96,6 +95,7 @@ const SearchPage = (props) => {
                     contentContainerStyle={{paddingBottom:20}} 
                     renderItem={({ item }) => (
                     <ArtistCard 
+                      onPressed={() => props.navigation.navigate('Albums')}
                       img={item.images[1] ? item.images[1].url : undefined} 
                       name={item.name} 
                       followers={item.followers.total} 

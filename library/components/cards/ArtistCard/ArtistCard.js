@@ -7,7 +7,7 @@ import colors from '../../../../res/colors';
 
 const ArtistCard = (props) => {
     return (
-        <TouchableOpacity style={{...styles.parentContainer, ...props.style}} activeOpacity={0.8} onPress={props.onPress} disabled={props.disabled}>
+        <TouchableOpacity style={{...styles.parentContainer, ...props.style}} activeOpacity={0.8} onPress={props.onPressed} disabled={props.disabled}>
             <View style={styles.imageContainer}>
                 <Image
                     style={styles.image}

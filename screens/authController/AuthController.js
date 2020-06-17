@@ -4,6 +4,11 @@ import SearchPage from '../search/SearchPage';
 import { useSelector } from 'react-redux';
 import AlbumsPage from '../albums/AlbumsPage';
 
+import { NavigationContainer} from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
 const AuthController = (props) => {
 
     const token = useSelector(state => state.authReducer.AUTH_TOKEN);
@@ -12,7 +17,14 @@ const AuthController = (props) => {
     let rootPage = null;
 
     if (token && (tokenExpirationTime && new Date().getTime() < tokenExpirationTime)) {
-      rootPage = <SearchPage />
+      rootPage = (
+        <NavigationContainer>
+          <Stack.Navigator headerMode='none' initialRouteName="Artists">
+            <Stack.Screen name="Artists" component={SearchPage} />
+            <Stack.Screen name="Albums" component={AlbumsPage} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      )
     } else {
       rootPage = <Onboarding />
     }
