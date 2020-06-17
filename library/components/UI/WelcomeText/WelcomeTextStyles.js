@@ -8,7 +8,7 @@ export default StyleSheet.create({
         flexGrow: 1,
         justifyContent: 'center',
         paddingHorizontal: 24,
-        paddingBottom: 75
+        // paddingBottom: 75
     },
     title: {
         color: colors.dark,

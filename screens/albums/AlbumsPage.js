@@ -107,9 +107,6 @@ const AlbumsPage = (props) => {
 
     return (
         <View style={styles.parentContainer}>
-            <SafeAreaView style={styles.topContainer}>
-                {/* <Text>hello top</Text> */}
-            </SafeAreaView>
             <View style={styles.botContainer}>
               {content}
             </View>

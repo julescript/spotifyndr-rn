@@ -3,7 +3,8 @@ import colors from '../../../../res/colors';
 
 export default StyleSheet.create({
     container: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        paddingTop: Platform.OS === 'android' ? 15 : 0
     },
     title: {
         flex: 1
