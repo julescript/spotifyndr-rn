@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, View, FlatList } from 'react-native';
+import { SafeAreaView, View, FlatList, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import styles from './SearchPageStyles';
 import ArtistCard from '../../library/components/cards/ArtistCard/ArtistCard';
 import SectionTitle from '../../library/components/UI/SectionTitle/SectionTitle';
@@ -66,6 +66,7 @@ const SearchPage = (props) => {
       content = (
         <FlatList  
           keyboardDismissMode='on-drag'
+          keyboardShouldPersistTaps='handled'
           ListHeaderComponent={<SectionTitle style={styles.sectionHeader} title={'Artists'} subtitle={"Showing results for '" + searchQuery + "'"}/>}
           data={searchResults.items}
           numColumns={2}
@@ -92,12 +93,14 @@ const SearchPage = (props) => {
       content = <Spinner />
     }
     return (
-          <View style={styles.parentContainer}>
-            <SearchHeader onChangeText={(e) => dispatch(updateSearchQuery(e))} value={searchQuery}/>
-            <View style={styles.botContainer}>
-                {content}
-            </View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <View style={styles.parentContainer}>
+          <SearchHeader onChangeText={(e) => dispatch(updateSearchQuery(e))} value={searchQuery}/>
+          <View style={styles.botContainer}>
+              {content}
           </View>
+        </View>
+      </TouchableWithoutFeedback>
     );
 };
 
