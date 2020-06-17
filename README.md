@@ -6,12 +6,12 @@ Spotify API driven react-native app that allows you to discover Spotify artists
 ## Project Status
 This project is currently in development. Users can search for Spotify artists and see their albums.
 
-## Spotifyndr prototype (using Sketch)
+## Spotifyndr Preview
   | Landing  | Home/Search  |
   | -----------------| -----|
   | ![Landing](/demo/Landing_Page.png) | ![Home/Search](/demo/Search_Page.png) |
 
-This design was planned before on paper, then moved to Sketch app for the fine details.
+This design was planned before on paper heavily influenced by the original [Spotifyndr](https://https://github.com/julescript/spotifyndr) design, then moved to Sketch app for the fine details.
 Note that i didn't use any styling library or theme.
 
 | Artists results  | Artist's Albums  |
@@ -36,6 +36,8 @@ At the end of the day, the technologies implemented in this project are React, R
 
 ## Future goals for this project
 
+* Add dark mode
 * Add more search capabilities like searching for music and albums directly
 * Add `redux-thunk` for async auth in redux
 * Add ability to preview music right from the app
+* Add internalization using the `i18n` package
