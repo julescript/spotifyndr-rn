@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import colors from '../../res/colors';
 
 export default StyleSheet.create({
@@ -13,7 +13,7 @@ export default StyleSheet.create({
         backgroundColor: colors.lightest,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingBottom: 20,
+        // paddingBottom: 20,
     },
     topText: {
         fontFamily: 'circular-black',
@@ -23,11 +23,11 @@ export default StyleSheet.create({
         color: colors.white
     },
     image: {
-        width: 100,
-        height: 100,
+        width: Dimensions.get('screen').width * 0.3333,
+        height: Dimensions.get('screen').width * 0.3333,
         position: 'absolute',
-        borderRadius: 50,
+        borderRadius: Dimensions.get('screen').width * 0.3333,
         alignSelf: 'center',
-        bottom: '45%'
+        bottom: '42.3%'
     }
 });
