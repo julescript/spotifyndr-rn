@@ -4,10 +4,11 @@ import styles from './ArtistCardStyles';
 import RatingStars from '../../UI/RatingStars/RatingStars';
 import { followersString } from '../../../utils/common';
 import colors from '../../../../res/colors';
+import UniversalTouchable from '../../UI/UniversalTouchable/UniversalTouchable';
 
 const ArtistCard = (props) => {
     return (
-        <TouchableOpacity style={{...styles.parentContainer, ...props.style}} activeOpacity={0.8} onPress={props.onPressed} disabled={props.disabled}>
+        <UniversalTouchable style={{...styles.parentContainer, ...props.style}} onPress={props.onPressed} disabled={props.disabled}>
             <View style={styles.imageContainer}>
                 <Image
                     style={styles.image}
@@ -19,7 +20,7 @@ const ArtistCard = (props) => {
                     <RatingStars rating={props.stars}/>
                 </View>
             </View>
-        </TouchableOpacity>
+        </UniversalTouchable>
     );
 };
 

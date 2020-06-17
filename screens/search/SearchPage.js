@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, SafeAreaView, View, ScrollView, FlatList, Button } from 'react-native';
+import { Text, SafeAreaView, View, ScrollView, FlatList, Button, ActivityIndicator } from 'react-native';
 import styles from './SearchPageStyles';
 import ArtistCard from '../../library/components/cards/ArtistCard/ArtistCard';
 import SectionTitle from '../../library/components/UI/SectionTitle/SectionTitle';
@@ -8,6 +8,11 @@ import useDebounce from '../../library/utils/debounce';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from '../../library/networking/axios';
 import { setLoading, setError, updateSearchResults, updateSearchQuery } from '../../library/store/actions/search';
+import colors from '../../res/colors';
+import Spinner from '../../library/components/UI/Spinner/Spinner';
+import ErrorState from '../../library/components/UI/ErrorState/ErrorState';
+import { isEmptyOrSpaces } from '../../library/utils/common';
+import WelcomeText from '../../library/components/UI/WelcomeText/WelcomeText';
 
 const DATA = [
     {
@@ -57,9 +62,18 @@ const SearchPage = (props) => {
   
   const debouncedSearchTerm = useDebounce(searchQuery, 300);
 
+  let content = null;
+
   React.useEffect(
     () => {
-      if (debouncedSearchTerm) {
+      if (isEmptyOrSpaces(searchQuery)){
+        dispatch(updateSearchResults([]));
+      }
+    }, [searchQuery] );
+
+  React.useEffect(
+    () => {
+      if (debouncedSearchTerm && !isEmptyOrSpaces(searchQuery)) {
         dispatch(setLoading(true));
         dispatch(setError(false));
         axios.get('/search/', {
@@ -69,7 +83,7 @@ const SearchPage = (props) => {
           params: {
               'q': debouncedSearchTerm,
               'type': 'artist',
-              'limit': 12
+              'limit': 24
           }
         })
           .then(res => {
@@ -78,21 +92,22 @@ const SearchPage = (props) => {
             dispatch(setError(false));
           })
           .catch(err => {
+            dispatch(updateSearchResults([]));
             dispatch(setLoading(false));
             dispatch(setError(true));
           })
       }
     }, [debouncedSearchTerm] );
-    return (
-        <View style={styles.parentContainer}>
-            <SearchHeader onChangeText={(e) => dispatch(updateSearchQuery(e))} value={searchQuery}/>
-            <View style={styles.botContainer}>
-                <FlatList  
+
+    if (searchResults.length != 0) {
+      content = (
+        <FlatList  
                     ListHeaderComponent={<SectionTitle style={styles.sectionHeader} title={'Artists'} subtitle={"Showing results for '" + searchQuery + "'"}/>}
                     data={searchResults.items}
                     numColumns={2}
                     style={styles.grid}
                     contentContainerStyle={{paddingBottom:20}} 
+                    ListEmptyComponent={<ErrorState style={styles.botContainer} title="No Results Found" subtitle={"Sorry we couldn't find results for '"+searchQuery+"'"}/>}
                     renderItem={({ item }) => (
                     <ArtistCard 
                       onPressed={() => props.navigation.navigate('Albums', {
@@ -105,6 +120,18 @@ const SearchPage = (props) => {
                       stars={(item.popularity/20.0)}
                       style={styles.gridItem}/>)}
                     ListFooterComponent={<SafeAreaView />}/>
+      );
+    }else {
+      content = <WelcomeText />;
+    }
+    if (loading) {
+      content = <Spinner />
+    }
+    return (
+        <View style={styles.parentContainer}>
+            <SearchHeader onChangeText={(e) => dispatch(updateSearchQuery(e))} value={searchQuery}/>
+            <View style={styles.botContainer}>
+                {content}
             </View>
         </View>
     );
