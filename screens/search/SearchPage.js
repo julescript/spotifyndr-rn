@@ -95,7 +95,10 @@ const SearchPage = (props) => {
                     contentContainerStyle={{paddingBottom:20}} 
                     renderItem={({ item }) => (
                     <ArtistCard 
-                      onPressed={() => props.navigation.navigate('Albums')}
+                      onPressed={() => props.navigation.navigate('Albums', {
+                        ID: item.id,
+                        name: item.name,
+                      })}
                       img={item.images[1] ? item.images[1].url : undefined} 
                       name={item.name} 
                       followers={item.followers.total} 

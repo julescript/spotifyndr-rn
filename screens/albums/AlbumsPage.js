@@ -42,6 +42,8 @@ const DATA = [
   
 
 const AlbumsPage = (props) => {
+
+    const { ID, name } = props.route.params;
     return (
         <View style={styles.parentContainer}>
             <SafeAreaView style={styles.topContainer}>
@@ -49,7 +51,7 @@ const AlbumsPage = (props) => {
             </SafeAreaView>
             <View style={styles.botContainer}>
                 <FlatList  
-                    ListHeaderComponent={<SectionTitleBack style={styles.sectionHeader} title={'dua lipa'} subtitle={'Albums'} onPressed={() => props.navigation.goBack()}/>}
+                    ListHeaderComponent={<SectionTitleBack style={styles.sectionHeader} title={name} subtitle={ID} onPressed={() => props.navigation.goBack()}/>}
                     data={DATA}
                     numColumns={2}
                     style={styles.grid}
