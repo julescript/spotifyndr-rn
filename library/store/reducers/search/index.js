@@ -2,7 +2,7 @@ import * as actionTypes from '../../actions/search';
 import { updateObject } from '../../../utils/common';;
 
 const initialState = {
-    SEARCH_RESULTS: null,
+    SEARCH_RESULTS: [],
     SEARCH_QUERY: '',
     loading: false,
     error: null
@@ -16,7 +16,7 @@ const reducer = (state = initialState, action) => {
             return updateObject(state, {SEARCH_QUERY: action.data})
         case actionTypes.SET_LOADING:
             return updateObject(state, {loading: action.value})
-            case actionTypes.SET_ERROR:
+        case actionTypes.SET_ERROR:
             return updateObject(state, {error: action.value})
         default:
             return state;
