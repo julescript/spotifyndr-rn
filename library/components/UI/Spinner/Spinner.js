@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './SpinnerStyles.js';
 import { View, ActivityIndicator } from 'react-native';
-import colors from '../../../../res/colors.js';
+import { colors } from 'res';
 
 const Spinner = (props) => {
     return (

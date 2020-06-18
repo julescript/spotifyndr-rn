@@ -12,8 +12,7 @@ import * as AuthSession from 'expo-auth-session';
 import { addToken } from 'library/store/actions/auth';
 import { ResponseError } from 'expo-auth-session/build/Errors';
 
-import strings from 'res/strings';
-import images from 'res/images';
+import { strings, images } from 'res';
 
 WebBrowser.maybeCompleteAuthSession();
 

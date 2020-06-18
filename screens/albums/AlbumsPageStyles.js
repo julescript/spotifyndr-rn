@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import colors from 'res/colors';
-import {Dimensions } from "react-native";
+import { colors } from 'res';
+import { Dimensions } from "react-native";
 
 export default StyleSheet.create({
     parentContainer: {

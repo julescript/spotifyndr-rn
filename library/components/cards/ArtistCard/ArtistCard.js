@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, Image, ActivityIndicator } from 'react-na
 import styles from './ArtistCardStyles';
 import RatingStars from '../../UI/RatingStars/RatingStars';
 import { followersString } from '../../../utils/common';
-import colors from '../../../../res/colors';
+import {colors} from 'res';
 import UniversalTouchable from '../../UI/UniversalTouchable/UniversalTouchable';
 
 const ArtistCard = (props) => {

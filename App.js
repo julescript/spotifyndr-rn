@@ -10,7 +10,7 @@ import { createStore, combineReducers } from 'redux';
 import searchReducer from 'library/store/reducers/search';
 import authReducer from 'library/store/reducers/auth';
 
-import fonts from 'res/fonts';
+import { fonts } from 'res';
 
 const rootReducer = combineReducers({
   authReducer: authReducer,

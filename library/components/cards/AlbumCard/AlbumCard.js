@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './AlbumCardStyles.js';
 import { View, Image, Text, ActivityIndicator } from 'react-native';
-import colors from '../../../../res/colors.js';
+import {colors} from 'res';
 import { tracksString } from '../../../utils/common.js';
 
 const AlbumCard = (props) => {

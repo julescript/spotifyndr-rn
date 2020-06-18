@@ -3,7 +3,7 @@ import styles from './SectionTitleBackStyles.js';
 import { View, Text, TouchableOpacity } from 'react-native';
 import SectionTitle from '../SectionTitle/SectionTitle.js';
 import { Ionicons } from '@expo/vector-icons';
-import colors from '../../../../res/colors.js';
+import { colors } from 'res';
 
 const SectionTitleBack = (props) => {
     return (

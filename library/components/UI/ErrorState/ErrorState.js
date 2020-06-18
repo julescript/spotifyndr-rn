@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ErrorStateStyles.js';
-import colors from '../../../../res/colors.js';
+import { colors } from 'res';
 import { View, Text } from 'react-native';
 
 const ErrorState = (props) => {

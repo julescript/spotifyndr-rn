@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './styles.js';
 import { TextInput, SafeAreaView, View, Image } from 'react-native';
-import strings from 'res/strings.js';
-import images from 'res/images.js';
+import {strings, images} from 'res';
 
 const SearchHeader = (props) => {
     return (

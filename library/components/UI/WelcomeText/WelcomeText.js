@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './WelcomeTextStyles.js';
-import colors from '../../../../res/colors.js';
 import { View, Text } from 'react-native';
-import strings from 'res/strings.js';
+import { colors, strings } from 'res';
 
 const WelcomeText = (props) => {
     return (

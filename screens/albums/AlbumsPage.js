@@ -9,7 +9,7 @@ import ErrorState from 'library/components/UI/ErrorState/ErrorState.js';
 import Spinner from 'library/components/UI/Spinner/Spinner.js';
 
 import axios from 'library/networking/axios';
-import strings from 'res/strings.js';
+import { strings } from 'res';
 
 const AlbumsPage = (props) => {
 

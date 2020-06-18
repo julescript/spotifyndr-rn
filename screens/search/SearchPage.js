@@ -15,7 +15,7 @@ import { setLoading, setError, updateSearchResults, updateSearchQuery } from 'li
 
 import { isEmptyOrSpaces } from 'library/utils/common';
 import useDebounce from 'library/utils/debounce';
-import strings from 'res/strings';
+import { strings } from 'res';
 
 const SearchPage = (props) => {
 

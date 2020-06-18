@@ -2,8 +2,7 @@ import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import styles from './LoginButtonStyles';
 import UniversalTouchable from '../../UI/UniversalTouchable/UniversalTouchable';
-import strings from 'res/strings';
-import images from 'res/images';
+import {strings, images} from 'res';
 
 const LoginButton = (props) => {
     return (

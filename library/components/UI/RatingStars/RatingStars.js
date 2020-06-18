@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './RatingStarsStyles.js';
 import { Ionicons } from '@expo/vector-icons';
 import { View } from 'react-native';
-import colors from '../../../../res/colors.js';
+import { colors } from 'res';
 
 const RatingStars = (props) => {
     let n = Math.round(parseFloat(props.rating))

@@ -1,7 +1,6 @@
 import { StyleSheet } from 'react-native';
-import colors from 'res/colors';
+import {colors, palette} from 'res';
 import { convertHexToRGBA } from 'library/utils/common';
-import palette from 'res/palette';
 
 export default StyleSheet.create({
     parentContainer: {
