@@ -15,7 +15,7 @@ const strings = {
         },
         heading: {
             line1: 'Artists',
-            line2: 'Showing results for: ',
+            line2: 'Showing results for ',
         },
         emptyState: {
             title: 'No Results Found',
