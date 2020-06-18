@@ -1,2 +1,2 @@
-import theme from 'spotify_theme';
+import theme from 'anghami_theme';
 module.exports =  theme;
