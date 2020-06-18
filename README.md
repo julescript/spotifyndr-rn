@@ -1,7 +1,8 @@
 # Spotifyndr
+my first react-native project.
 
 #### Brief:
-Spotify API driven react-native app that allows you to discover Spotify artists
+Spotify API driven react-native app that allows you to discover Spotify artists.
 
 ## Project Status
 This project is currently in development. Users can search for Spotify artists and see their albums.

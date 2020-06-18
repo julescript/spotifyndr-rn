@@ -1,5 +1,5 @@
 export default {
-    primary: '#1BD760',
+    primary: '#ee2a55',
     danger: '#ee2a55',
     
     star_filled: '#FFA900',
