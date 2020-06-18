@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SafeAreaView, View, FlatList, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import styles from './SearchPageStyles';
-import ArtistCard from '../../library/components/cards/ArtistCard/ArtistCard';
-import SectionTitle from '../../library/components/UI/SectionTitle/SectionTitle';
-import SearchHeader from '../../library/components/navigation/Header';
-import useDebounce from '../../library/utils/debounce';
+
+import ArtistCard from 'library/components/cards/ArtistCard/ArtistCard';
+import SectionTitle from 'library/components/UI/SectionTitle/SectionTitle';
+import SearchHeader from 'library/components/navigation/Header';
+import Spinner from 'library/components/UI/Spinner/Spinner';
+import ErrorState from 'library/components/UI/ErrorState/ErrorState';
+import WelcomeText from 'library/components/UI/WelcomeText/WelcomeText';
+
 import { useDispatch, useSelector } from 'react-redux';
-import axios from '../../library/networking/axios';
-import { setLoading, setError, updateSearchResults, updateSearchQuery } from '../../library/store/actions/search';
-import Spinner from '../../library/components/UI/Spinner/Spinner';
-import ErrorState from '../../library/components/UI/ErrorState/ErrorState';
-import { isEmptyOrSpaces } from '../../library/utils/common';
-import WelcomeText from '../../library/components/UI/WelcomeText/WelcomeText';
+import axios from 'library/networking/axios';
+import { setLoading, setError, updateSearchResults, updateSearchQuery } from 'library/store/actions/search';
+
+import { isEmptyOrSpaces } from 'library/utils/common';
+import useDebounce from 'library/utils/debounce';
+import strings from 'res/strings';
 
 const SearchPage = (props) => {
 
@@ -67,12 +71,12 @@ const SearchPage = (props) => {
         <FlatList  
           keyboardDismissMode='on-drag'
           keyboardShouldPersistTaps='handled'
-          ListHeaderComponent={<SectionTitle style={styles.sectionHeader} title={'Artists'} subtitle={"Showing results for '" + searchQuery + "'"}/>}
+          ListHeaderComponent={<SectionTitle style={styles.sectionHeader} title={strings.artistsPage.heading.line1} subtitle={strings.artistsPage.heading.line2 + "'" + searchQuery + "'"}/>}
           data={searchResults.items}
           numColumns={2}
           style={styles.grid}
           contentContainerStyle={{paddingBottom:20}} 
-          ListEmptyComponent={<ErrorState style={styles.botContainer} title="No Results Found" subtitle={"Sorry we couldn't find results for '"+searchQuery+"'"}/>}
+          ListEmptyComponent={<ErrorState style={styles.botContainer} title={strings.artistsPage.emptyState.title} subtitle={strings.artistsPage.emptyState.description+"'"+searchQuery+"'"}/>}
           renderItem={({ item }) => (
           <ArtistCard 
             onPressed={() => props.navigation.navigate('Albums', {

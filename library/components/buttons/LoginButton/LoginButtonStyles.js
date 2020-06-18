@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../../../res/colors';
+import colors from 'res/colors';
+import palette from 'res/palette';
 
 export default StyleSheet.create({
     container:{
@@ -9,7 +10,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         paddingHorizontal: 7,
-        borderRadius: 25,
+        borderRadius: palette.borderRadius.button,
         overflow: 'hidden',
     },  
     image: {
@@ -22,7 +23,7 @@ export default StyleSheet.create({
     text: {
         color: colors.white,
         paddingHorizontal: 12,
-        fontFamily: 'circular-bold',
+        fontFamily: 'custom-bold',
         minWidth: 180,
         fontSize: 14
     },

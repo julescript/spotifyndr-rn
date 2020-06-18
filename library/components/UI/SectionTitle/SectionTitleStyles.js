@@ -1,15 +1,15 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../../../res/colors';
+import colors from 'res/colors';
 
 export default StyleSheet.create({
     title: {
         fontSize: 35,
-        fontFamily: 'circular-black',
+        fontFamily: 'custom-black',
         color: colors.dark
     },
     subtitle: {
         fontSize: 18,
-        fontFamily: 'circular-medium',
+        fontFamily: 'custom-medium',
         color: colors.light
     }
 });

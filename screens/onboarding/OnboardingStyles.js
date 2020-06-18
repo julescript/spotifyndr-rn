@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import colors from '../../res/colors';
+import colors from 'res/colors';
 
 export default StyleSheet.create({
     topContainer:{
@@ -16,10 +16,10 @@ export default StyleSheet.create({
         // paddingBottom: 20,
     },
     topText: {
-        fontFamily: 'circular-black',
+        fontFamily: 'custom-black',
         fontSize: 60,
         lineHeight: 55,
-        paddingTop: 20,
+        paddingVertical: 20,
         color: colors.white
     },
     image: {
@@ -28,6 +28,7 @@ export default StyleSheet.create({
         position: 'absolute',
         borderRadius: Dimensions.get('screen').width * 0.3333,
         alignSelf: 'center',
-        bottom: '42.3%'
+        bottom: '42.3%',
+        backgroundColor: colors.primary
     }
 });

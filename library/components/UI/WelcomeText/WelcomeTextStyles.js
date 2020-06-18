@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-import {Dimensions } from "react-native";
-import colors from '../../../../res/colors';
+import colors from 'res/colors';
 
 export default StyleSheet.create({
     container: {
@@ -13,14 +12,14 @@ export default StyleSheet.create({
     title: {
         color: colors.dark,
         fontSize: 50,
-        fontFamily: 'circular-black',
+        fontFamily: 'custom-black',
         marginBottom: 0,
         textAlign: 'left'
     },
     subtitle: {
         color: colors.dark,
         fontSize: 24,
-        fontFamily: 'circular-black',
+        fontFamily: 'custom-black',
         textAlign: 'left'
     },
     seperator: {
@@ -33,7 +32,7 @@ export default StyleSheet.create({
     description: {
         color: colors.light,
         fontSize: 16,
-        fontFamily: 'circular-medium',
+        fontFamily: 'custom-medium',
         textAlign: 'left'
     },
 });

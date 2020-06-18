@@ -10,9 +10,9 @@
     "scheme": "spotifyndr",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./res/images/icon.png",
+    "icon": "res/images/icon.png",
     "splash": {
-      "image": "./res/images/splash.png",
+      "image": "res/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#1BD760"
     },

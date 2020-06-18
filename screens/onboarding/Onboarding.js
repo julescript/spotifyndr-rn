@@ -1,15 +1,20 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import styles from './OnboardingStyles';
-import LoginCard from '../../library/components/cards/LoginCard/LoginCard';
+import LoginCard from 'library/components/cards/LoginCard/LoginCard';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import * as WebBrowser from 'expo-web-browser';
 import { makeRedirectUri, ResponseType, useAuthRequest } from 'expo-auth-session';
-import { spotifyCredentials } from '../../library/utils/common';
+import { spotifyCredentials } from 'library/utils/common';
 import * as AuthSession from 'expo-auth-session';
-import { addToken } from '../../library/store/actions/auth';
+import { addToken } from 'library/store/actions/auth';
+import { ResponseError } from 'expo-auth-session/build/Errors';
+
+import strings from 'res/strings';
+import images from 'res/images';
+
 WebBrowser.maybeCompleteAuthSession();
 
 const discovery = {
@@ -51,14 +56,14 @@ const Onboarding = (props) => {
         <React.Fragment>
             <View style={styles.topContainer}>
                 <Text style={styles.topText}>
-                    {"find\nyour\nartists"}
+                    {strings.onboarding.welcome}
                 </Text>
             </View>
             <View style={styles.botContainer}>
                 <LoginCard onLoginPress = {() => {promptAsync()}}
                 />
             </View>
-            <Image source={require('../../res/images/icon.png')} style={styles.image} resizeMode="contain"/>
+            <Image source={images.logo} style={styles.image} resizeMode="contain"/>
         </React.Fragment>
     );
 };

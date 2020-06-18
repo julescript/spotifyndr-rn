@@ -1,5 +1,6 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import colors from '../../../../res/colors';
+import colors from 'res/colors';
+import palette from 'res/palette';
 
 export default StyleSheet.create({
     parentContainer: {
@@ -8,7 +9,7 @@ export default StyleSheet.create({
     },
     imageContainer: {
         backgroundColor: colors.dark,
-        borderRadius: 20,
+        borderRadius: palette.borderRadius.sm,
         overflow: 'hidden',
         minHeight: (Dimensions.get('window').width - 40) / 2,
         maxWidth: (Dimensions.get('window').width - 40) / 2,
@@ -24,14 +25,14 @@ export default StyleSheet.create({
     },
     titleLabel: {
         fontSize: 16,
-        fontFamily: 'circular-black',
+        fontFamily: 'custom-black',
         color: colors.dark,
         marginBottom: 2,
         marginTop: 7
     },
     subtitleLabel: {
         fontSize: 12,
-        fontFamily: 'circular-medium',
+        fontFamily: 'custom-medium',
         color: colors.dark,
         opacity: 0.66,
         marginBottom: 2,

@@ -1,12 +1,13 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../../../res/colors';
-import { convertHexToRGBA } from '../../../utils/common';
+import colors from 'res/colors';
+import { convertHexToRGBA } from 'library/utils/common';
+import palette from 'res/palette';
 
 export default StyleSheet.create({
     parentContainer: {
         backgroundColor: colors.dark,
         flex: 1,
-        borderRadius: 20,
+        borderRadius: palette.borderRadius.sm,
         overflow: 'hidden',
         position: 'relative'
     },
@@ -33,13 +34,13 @@ export default StyleSheet.create({
     },
     nameLabel: {
         fontSize: 16,
-        fontFamily: 'circular-black',
+        fontFamily: 'custom-black',
         color: colors.white,
         marginBottom: 3
     },
     descLabel: {
         fontSize: 12,
-        fontFamily: 'circular-medium',
+        fontFamily: 'custom-medium',
         color: colors.white,
         opacity: 0.66,
         marginBottom: 7

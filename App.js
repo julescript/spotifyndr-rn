@@ -7,8 +7,10 @@ import * as Font from 'expo-font';
 
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
-import searchReducer from './library/store/reducers/search';
-import authReducer from './library/store/reducers/auth';
+import searchReducer from 'library/store/reducers/search';
+import authReducer from 'library/store/reducers/auth';
+
+import fonts from 'res/fonts';
 
 const rootReducer = combineReducers({
   authReducer: authReducer,
@@ -19,10 +21,10 @@ const store = createStore(rootReducer);
 
 const fetchFonts = () => {
   return Font.loadAsync({
-    'circular-book': require('./res/fonts/lineto-circular-book.ttf'),
-    'circular-medium': require('./res/fonts/lineto-circular-medium.ttf'),
-    'circular-bold': require('./res/fonts/lineto-circular-bold.ttf'),
-    'circular-black': require('./res/fonts/lineto-circular-black.ttf'),
+    'custom-book': fonts.book,
+    'custom-medium': fonts.medium,
+    'custom-bold': fonts.bold,
+    'custom-black': fonts.black,
   });
 };
 

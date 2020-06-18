@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
-import colors from '../../../../res/colors';
+import colors from 'res/colors';
+import palette from 'res/palette';
 
 export default StyleSheet.create({
     container: {
         backgroundColor: colors.white,
         padding: 30,
-        borderRadius: 35,
+        borderRadius: palette.borderRadius.lg,
         elevation: 10,
         shadowColor: colors.black,
         shadowOpacity: 0.1,
@@ -13,7 +14,7 @@ export default StyleSheet.create({
         shadowRadius: 20,
     },
     text: {
-        fontFamily: 'circular-black',
+        fontFamily: 'custom-black',
         color: colors.dark,
         fontSize: 22,
         marginBottom: 20

@@ -1,11 +1,12 @@
-import { StyleSheet, Dimensions, Platform } from 'react-native';
-import colors from '../../../../res/colors';
+import { StyleSheet, Platform } from 'react-native';
+import colors from 'res/colors';
+import palette from 'res/palette';
 
 export default StyleSheet.create({
     container: {
         backgroundColor: colors.primary,
-        borderBottomRightRadius: 25,
-        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: palette.borderRadius.md,
+        borderBottomLeftRadius: palette.borderRadius.md,
         paddingTop: Platform.OS === 'android' ? 25 : 0
     },
     child: {
@@ -21,9 +22,9 @@ export default StyleSheet.create({
         flex: 1,
         height: 44,
         backgroundColor: colors.white,
-        borderRadius: 22,
+        borderRadius: palette.borderRadius.searchBar,
         fontSize: 18,
-        fontFamily: 'circular-black',
+        fontFamily: 'custom-black',
         color: colors.dark,
         paddingHorizontal: 20
     }
