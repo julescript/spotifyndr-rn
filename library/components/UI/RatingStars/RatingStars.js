@@ -22,10 +22,10 @@ const RatingStars = (props) => {
 
     let stars = rating.map((e,idx) => {
         if (e === 0) {
-            return (<Ionicons key={idx} name="md-star" size={18} color={colors.lighter} style={styles.star}/>);
+            return (<Ionicons key={idx} name="md-star" size={18} color={colors.star_empty} style={styles.star}/>);
         }
         else {
-            return (<Ionicons key={idx} name="md-star" size={18} color={colors.stars} style={styles.star}/>);
+            return (<Ionicons key={idx} name="md-star" size={18} color={colors.star_filled} style={styles.star}/>);
         }
     });
 

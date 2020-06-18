@@ -1,7 +1,9 @@
 export default {
     primary: '#1BD760',
     danger: '#ee2a55',
-    stars: '#FFA900',
+    
+    star_filled: '#FFA900',
+    star_empty: '#EAEAEA',
 
     dark: '#333333',
     darker: '#121212',
