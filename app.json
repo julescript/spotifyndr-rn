@@ -12,9 +12,9 @@
     "orientation": "portrait",
     "icon": "res/spotifyndr/images/icon.png",
     "splash": {
-      "image": "res/spotifyndr/images/splash.png",
+      "image": "./splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#1BD760"
+      "backgroundColor": "#333333"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
