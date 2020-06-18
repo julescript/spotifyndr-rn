@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, View, FlatList, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import styles from './SearchPageStyles';
 
@@ -29,6 +29,8 @@ const SearchPage = (props) => {
   
   const debouncedSearchTerm = useDebounce(searchQuery, 300);
 
+  const [ shoulLoadMore, setShoulLoadMore ] = useState(false);
+
   let content = null;
 
   React.useEffect(
@@ -36,7 +38,7 @@ const SearchPage = (props) => {
       if (isEmptyOrSpaces(searchQuery)){
         dispatch(updateSearchResults([]));
       }
-    }, [searchQuery] );
+  }, [searchQuery] );
 
   React.useEffect(
     () => {
@@ -50,7 +52,7 @@ const SearchPage = (props) => {
           params: {
               'q': debouncedSearchTerm,
               'type': 'artist',
-              'limit': 24
+              'limit': 12
           }
         })
           .then(res => {
@@ -64,16 +66,54 @@ const SearchPage = (props) => {
             dispatch(setError(true));
           })
       }
-    }, [debouncedSearchTerm] );
+  }, [debouncedSearchTerm] );
+
+  React.useEffect(
+    () => {
+      if(shoulLoadMore && !loading) {
+        fetchNext(searchResults.next)
+      }
+  }, [shoulLoadMore] );
+
+  const fetchNext = (next) => {
+    if (next != null) {
+      dispatch(setLoading(true));
+      dispatch(setError(false));
+      console.log("LOADING MORE")
+      axios.get(next, {
+          headers: {
+              'Authorization': 'Bearer ' + token,
+          },
+      })
+          .then(res => {
+              const results = {...res.data.artists}
+              const oldResults = {...searchResults}
+              results['items'].unshift(...oldResults['items']);
+              dispatch(updateSearchResults(results));
+              dispatch(setLoading(false));
+              dispatch(setError(false));
+              setShoulLoadMore(false);
+          })
+          .catch(err => {
+            dispatch(updateSearchResults([]));
+            dispatch(setLoading(false));
+            dispatch(setError(true));
+            setShoulLoadMore(false);
+          })
+    }
+  }
 
     if (searchResults.length != 0) {
       content = (
         <FlatList  
+          scrollIndicatorInsets={{ right: 1 }} 
           keyboardDismissMode='on-drag'
           keyboardShouldPersistTaps='handled'
           ListHeaderComponent={<SectionTitle style={styles.sectionHeader} title={strings.artistsPage.heading.line1} subtitle={strings.artistsPage.heading.line2 + "'" + searchQuery + "'"}/>}
           data={searchResults.items}
           numColumns={2}
+          onEndReachedThreshold={0.5}
+          onEndReached={() => setShoulLoadMore(true)}
           style={styles.grid}
           contentContainerStyle={{paddingBottom:20}} 
           ListEmptyComponent={<ErrorState style={styles.botContainer} title={strings.artistsPage.emptyState.title} subtitle={strings.artistsPage.emptyState.description+"'"+searchQuery+"'"}/>}
@@ -90,12 +130,15 @@ const SearchPage = (props) => {
             style={styles.gridItem}/>)}
           ListFooterComponent={<SafeAreaView />}/>
       );
-    }else {
+    } else {
       content = <WelcomeText />;
     }
-    if (loading) {
-      content = <Spinner />
+    if (error) {
+      content = <ErrorState danger title={strings.errorState.title} subtitle={strings.errorState.description}/>;
     }
+    // if (loading) {
+    //   content = <Spinner />
+    // }
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <View style={styles.parentContainer}>

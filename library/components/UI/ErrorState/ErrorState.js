@@ -7,7 +7,7 @@ const ErrorState = (props) => {
     return (
         <View style={{...styles.container, ...props.style}}>
             <Text style={{...styles.title, color: props.danger ? colors.danger : colors.primary}}>{props.title}</Text>
-            <Text style={styles.subtitle}>{props.subtitle}</Text>
+            <Text numberOfLines={3} style={styles.subtitle}>{props.subtitle}</Text>
         </View>
     );
 };

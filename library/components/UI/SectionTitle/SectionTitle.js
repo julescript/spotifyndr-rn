@@ -6,7 +6,7 @@ const SectionTitle = (props) => {
     return (
         <View style={props.style}>
             <Text numberOfLines={1} style={styles.title}>{props.title}</Text>
-            <Text style={styles.subtitle}>{props.subtitle}</Text>
+            <Text numberOfLines={1} style={styles.subtitle}>{props.subtitle}</Text>
         </View>
     );
 };

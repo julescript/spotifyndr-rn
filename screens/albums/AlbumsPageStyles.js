@@ -20,7 +20,7 @@ export default StyleSheet.create({
         maxWidth: (Dimensions.get('window').width - 30) / 2,
     },
     grid: {
-        flex: 1,
+        // flex: 1,
         padding: 10,
     },
     sectionHeader: {
