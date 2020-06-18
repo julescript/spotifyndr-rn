@@ -13,7 +13,7 @@ const AlbumCard = (props) => {
                     source={{uri: props.img,}} 
                     PlaceholderContent={<ActivityIndicator size='large' color={colors.lighter}/>}/>
             </View>
-            <Text style={styles.titleLabel}>{props.name}</Text>
+            <Text style={styles.titleLabel} numberOfLines={3}>{props.name}</Text>
             <Text style={styles.subtitleLabel}>{props.date + ' · ' + tracksString(props.tracks)}</Text>
         </View>
     );

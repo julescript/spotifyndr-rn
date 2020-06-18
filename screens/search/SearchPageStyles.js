@@ -5,7 +5,7 @@ import {Dimensions } from "react-native";
 export default StyleSheet.create({
     parentContainer: {
         flex: 1,
-        backgroundColor: colors.lighter
+        backgroundColor: colors.lightest
     },
     topContainer:{
         // backgroundColor: colors.white,

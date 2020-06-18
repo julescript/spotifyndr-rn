@@ -16,7 +16,7 @@ const ArtistCard = (props) => {
                     // PlaceholderContent={<ActivityIndicator size='large' color={colors.lighter}/>}
                     />
                 <View style={styles.descriptionContainer}>
-                    <Text style={styles.nameLabel}>{props.name}</Text>
+                    <Text style={styles.nameLabel} numberOfLines={3}>{props.name}</Text>
                     <Text style={styles.descLabel}>{followersString(props.followers)}</Text>
                     <RatingStars rating={props.stars}/>
                 </View>
