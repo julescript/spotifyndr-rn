@@ -10,12 +10,11 @@ import ErrorState from 'library/components/UI/ErrorState/ErrorState';
 import WelcomeText from 'library/components/UI/WelcomeText/WelcomeText';
 
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'library/networking/axios';
 import { setLoading, setError, updateSearchResults, updateSearchQuery } from 'library/store/actions/search';
 
 import { isEmptyOrSpaces } from 'library/utils/common';
 import useDebounce from 'library/utils/debounce';
-import { strings } from 'res';
+import { strings, services } from 'res';
 
 const SearchPage = (props) => {
 
@@ -45,16 +44,7 @@ const SearchPage = (props) => {
       if (debouncedSearchTerm && !isEmptyOrSpaces(searchQuery)) {
         dispatch(setLoading(true));
         dispatch(setError(false));
-        axios.get('/search/', {
-          headers: {
-              'Authorization': 'Bearer ' + token,
-          },
-          params: {
-              'q': debouncedSearchTerm,
-              'type': 'artist',
-              'limit': 12
-          }
-        })
+        services.searchArtists(debouncedSearchTerm, token)
           .then(res => {
             dispatch(updateSearchResults(res.data.artists));
             dispatch(setLoading(false));
@@ -79,27 +69,22 @@ const SearchPage = (props) => {
     if (next != null) {
       dispatch(setLoading(true));
       dispatch(setError(false));
-      console.log("LOADING MORE")
-      axios.get(next, {
-          headers: {
-              'Authorization': 'Bearer ' + token,
-          },
-      })
-          .then(res => {
-              const results = {...res.data.artists}
-              const oldResults = {...searchResults}
-              results['items'].unshift(...oldResults['items']);
-              dispatch(updateSearchResults(results));
-              dispatch(setLoading(false));
-              dispatch(setError(false));
-              setShoulLoadMore(false);
-          })
-          .catch(err => {
-            dispatch(updateSearchResults([]));
+      services.next(next, token)
+        .then(res => {
+            const results = {...res.data.artists}
+            const oldResults = {...searchResults}
+            results['items'].unshift(...oldResults['items']);
+            dispatch(updateSearchResults(results));
             dispatch(setLoading(false));
-            dispatch(setError(true));
+            dispatch(setError(false));
             setShoulLoadMore(false);
-          })
+        })
+        .catch(err => {
+          dispatch(updateSearchResults([]));
+          dispatch(setLoading(false));
+          dispatch(setError(true));
+          setShoulLoadMore(false);
+        })
     }
   }
 

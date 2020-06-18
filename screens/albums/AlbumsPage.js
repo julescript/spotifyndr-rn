@@ -8,8 +8,7 @@ import SectionTitleBack from 'library/components/UI/SectionTitleBack/SectionTitl
 import ErrorState from 'library/components/UI/ErrorState/ErrorState.js';
 import Spinner from 'library/components/UI/Spinner/Spinner.js';
 
-import axios from 'library/networking/axios';
-import { strings } from 'res';
+import { strings, services } from 'res';
 
 const AlbumsPage = (props) => {
 
@@ -30,16 +29,7 @@ const AlbumsPage = (props) => {
         setLoading1(true)
         setLoading(true)
         setError(false)
-        axios.get('artists/'+ID+'/albums', {
-          headers: {
-              'Authorization': 'Bearer ' + token,
-          },
-          params: {
-              'id': ID,
-              'country': 'US',
-              'limit': 12
-          }
-        })
+        services.getAlbums(ID, token)
           .then(res => {
             setResults(res.data)
             setLoading1(false)
@@ -66,26 +56,21 @@ const AlbumsPage = (props) => {
       if (next != null) {
         setLoading(true)
         setError(false)
-        console.log("LOADING MORE ALBUMS")
-        axios.get(next, {
-            headers: {
-                'Authorization': 'Bearer ' + token,
-            },
-        })
-            .then(res => {
-                const results1 = {...res.data}
-                const oldResults = {...results}
-                results1['items'].unshift(...oldResults['items']);
-                setResults(results1);
-                setLoading(false);
-                setError(false);
-                setShoulLoadMore(false);
-            })
-            .catch(err => {
-              setLoading(false)
-              setError(err.response)
+        services.next(next, token)
+          .then(res => {
+              const results1 = {...res.data}
+              const oldResults = {...results}
+              results1['items'].unshift(...oldResults['items']);
+              setResults(results1);
+              setLoading(false);
+              setError(false);
               setShoulLoadMore(false);
-            })
+          })
+          .catch(err => {
+            setLoading(false)
+            setError(err.response)
+            setShoulLoadMore(false);
+          })
       }
     }
 

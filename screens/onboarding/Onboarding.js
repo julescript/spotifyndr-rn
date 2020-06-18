@@ -7,37 +7,26 @@ import { useDispatch } from 'react-redux';
 
 import * as WebBrowser from 'expo-web-browser';
 import { makeRedirectUri, ResponseType, useAuthRequest } from 'expo-auth-session';
-import { spotifyCredentials } from 'library/utils/common';
-import * as AuthSession from 'expo-auth-session';
 import { addToken } from 'library/store/actions/auth';
-import { ResponseError } from 'expo-auth-session/build/Errors';
 
-import { strings, images } from 'res';
+import { strings, images, services } from 'res';
 
 WebBrowser.maybeCompleteAuthSession();
-
-const discovery = {
-  authorizationEndpoint: 'https://accounts.spotify.com/authorize',
-  tokenEndpoint: 'https://accounts.spotify.com/api/token',
-};
 
 const Onboarding = (props) => {
 
     const dispatch = useDispatch();
-    // const token = useSelector(state => state.authReducer.AUTH_TOKEN);
 
     const [request, response, promptAsync] = useAuthRequest({
             responseType: ResponseType.Token,
-            clientId: spotifyCredentials.clientId,
+            clientId: services.credentials.clientId,
             scopes: ['user-read-email', 'playlist-modify-public'],
-            // In order to follow the "Authorization Code Flow" to fetch token after authorizationEndpoint
-            // this must be set to false
             usePKCE: false,
             redirectUri: makeRedirectUri({
                 native: 'spotifyndr://redirect',
               }),
         },
-        discovery
+        services.authEndPoints
     );
 
     React.useEffect(() => {
