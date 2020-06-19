@@ -4,6 +4,7 @@ import images from './images';
 import palette from './palette';
 import strings from './strings';
 import services from './services';
+import translations from './translations';
 
 export default {
     colors: colors,
@@ -11,5 +12,6 @@ export default {
     images: images,
     palette: palette,
     strings: strings,
-    services: services
+    services: services,
+    translations: translations
 }

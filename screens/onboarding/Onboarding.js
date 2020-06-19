@@ -40,6 +40,10 @@ const Onboarding = (props) => {
         }
     }, [response]);
 
+    console.log(makeRedirectUri({
+        native: 'spotifyndr://redirect',
+      }))
+
     return (
         <React.Fragment>
             <View style={styles.topContainer}>
