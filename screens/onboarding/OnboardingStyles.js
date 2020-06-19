@@ -26,9 +26,10 @@ export default StyleSheet.create({
         width: Dimensions.get('screen').width * 0.3333,
         height: Dimensions.get('screen').width * 0.3333,
         position: 'absolute',
-        borderRadius: Dimensions.get('screen').width * 0.3333,
+        borderRadius: 200,
         alignSelf: 'center',
         bottom: '42.3%',
-        backgroundColor: colors.primary
+        backgroundColor: colors.primary,
+        overflow: 'hidden'
     }
 });

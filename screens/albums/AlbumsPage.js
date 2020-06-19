@@ -9,6 +9,7 @@ import ErrorState from 'library/components/UI/ErrorState/ErrorState.js';
 import Spinner from 'library/components/UI/Spinner/Spinner.js';
 
 import { strings, services } from 'res';
+import i18n from 'library/utils/localization';
 
 const AlbumsPage = (props) => {
 
@@ -78,12 +79,12 @@ const AlbumsPage = (props) => {
       content = (
         <FlatList  
         scrollIndicatorInsets={{ right: 1 }} 
-        ListHeaderComponent={<SectionTitleBack style={styles.sectionHeader} title={name} subtitle={strings.albumsPage.heading.line2} onPressed={() => props.navigation.goBack()}/>}
+        ListHeaderComponent={<SectionTitleBack style={styles.sectionHeader} title={name} subtitle={i18n.t(strings.albumsPage.heading.line2)} onPressed={() => props.navigation.goBack()}/>}
         data={results.items}
         numColumns={2}
         style={styles.grid}
         contentContainerStyle={{paddingBottom:20}} 
-        ListEmptyComponent={<ErrorState style={styles.botContainer} title={strings.albumsPage.emptyState.title} subtitle={strings.albumsPage.emptyState.description+"'"+name+"'"}/>}
+        ListEmptyComponent={<ErrorState style={styles.botContainer} title={i18n.t(strings.albumsPage.emptyState.title)} subtitle={i18n.t(strings.albumsPage.emptyState.description)+"'"+name+"'"}/>}
         renderItem={({ item }) => <AlbumCard style={styles.gridItem} img={item.images[1] ? item.images[1].url : null} name={item.name} date={item.release_date.substring(0, 4)} tracks={item.total_tracks}/>}
         ListFooterComponent={<SafeAreaView />}
         onEndReachedThreshold={0.5}
@@ -91,7 +92,7 @@ const AlbumsPage = (props) => {
       );
     }
     if (error) {
-      content = <ErrorState danger title={strings.errorState.title} subtitle={strings.errorState.description}/>;
+      content = <ErrorState danger title={i18n.t(strings.errorState.title)} subtitle={i18n.t(strings.errorState.description)}/>;
     }
     if (loading1) {
       content = <Spinner />

@@ -15,6 +15,7 @@ import { setLoading, setError, updateSearchResults, updateSearchQuery } from 'li
 import { isEmptyOrSpaces } from 'library/utils/common';
 import useDebounce from 'library/utils/debounce';
 import { strings, services } from 'res';
+import i18n from 'library/utils/localization';
 
 const SearchPage = (props) => {
 
@@ -94,14 +95,14 @@ const SearchPage = (props) => {
           scrollIndicatorInsets={{ right: 1 }} 
           keyboardDismissMode='on-drag'
           keyboardShouldPersistTaps='handled'
-          ListHeaderComponent={<SectionTitle style={styles.sectionHeader} title={strings.artistsPage.heading.line1} subtitle={strings.artistsPage.heading.line2 + "'" + searchQuery + "'"}/>}
+          ListHeaderComponent={<SectionTitle style={styles.sectionHeader} title={i18n.t(strings.artistsPage.heading.line1)} subtitle={i18n.t(strings.artistsPage.heading.line2) + "'" + searchQuery + "'"}/>}
           data={searchResults.items}
           numColumns={2}
           onEndReachedThreshold={0.5}
           onEndReached={() => setShoulLoadMore(true)}
           style={styles.grid}
           contentContainerStyle={{paddingBottom:20}} 
-          ListEmptyComponent={<ErrorState style={styles.botContainer} title={strings.artistsPage.emptyState.title} subtitle={strings.artistsPage.emptyState.description+"'"+searchQuery+"'"}/>}
+          ListEmptyComponent={<ErrorState style={styles.botContainer} title={i18n.t(strings.artistsPage.emptyState.title)} subtitle={i18n.t(strings.artistsPage.emptyState.description)+"'"+searchQuery+"'"}/>}
           renderItem={({ item }) => (
           <ArtistCard 
             onPressed={() => props.navigation.navigate('Albums', {
@@ -119,7 +120,7 @@ const SearchPage = (props) => {
       content = <WelcomeText />;
     }
     if (error) {
-      content = <ErrorState danger title={strings.errorState.title} subtitle={strings.errorState.description}/>;
+      content = <ErrorState danger title={i18n.t(strings.errorState.title)} subtitle={i18n.t(strings.errorState.description)}/>;
     }
     // if (loading) {
     //   content = <Spinner />

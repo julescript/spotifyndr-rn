@@ -10,6 +10,7 @@ import { makeRedirectUri, ResponseType, useAuthRequest } from 'expo-auth-session
 import { addToken } from 'library/store/actions/auth';
 
 import { strings, images, services } from 'res';
+import i18n from 'library/utils/localization';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -48,7 +49,7 @@ const Onboarding = (props) => {
         <React.Fragment>
             <View style={styles.topContainer}>
                 <Text style={styles.topText}>
-                    {strings.onboarding.welcome}
+                    {i18n.t(strings.onboarding.welcome)}
                 </Text>
             </View>
             <View style={styles.botContainer}>
